@@ -1,0 +1,22 @@
+.gif{
+  width: 200px;
+  height: 150px;
+}
+
+button{
+  border-radius: 25px;
+}
+
+.imgContainer{
+    float:left;
+    padding: 5px;
+}
+
+#pHead{
+  background-color: lightgray;
+  padding-left: 15px;
+}
+
+#aCartoons{
+  padding-right: 15px;
+}
