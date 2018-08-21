@@ -17,25 +17,14 @@
     <div class="jumbotron">
         <h1>PROJECT X</h1>
         <p>...</p>
-        <p><a class="btn btn-primary btn-lg" href="https://youtu.be/ZkOKRkI4Nw4?t=11?" role="button">Learn more</a></p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
     </div>
       <div class="input-group input-daterange">
-          <input type="text" class="form-control" value="2012-04-05">
+          <input type="date" class="form-control" value="2012-04-05">
           <div class="input-group-addon">to</div>
-          <input type="text" class="form-control" value="2012-04-19">
+          <input type="date" class="form-control" value="2012-04-19">
       </div>
-
       <center><button id="buttonFirst" onclick="nextPage()">Submit</button></p></center>
-      <!--<br>-->
-        <!--<h2>Pagination - Active State</h2>-->
-        <!--<p>Add class .active to let the user know which page he/she is on:</p>-->
-        <!--<ul class="pagination">-->
-          <!--<li class="active"><a href="#">1</a></li>-->
-          <!--<li><a href="#">2</a></li>-->
-          <!--<li><a href="#">3</a></li>-->
-          <!--<li><a href="#">4</a></li>-->
-          <!--<li><a href="#">5</a></li>-->
-        <!--</ul>-->
       </div>
 <!-- Page Features -->
       <div id="second_page">
@@ -53,10 +42,6 @@
     <div class="col-lg-3 col-md-6 mb-4">
       <div class="card">
         <img class="card-img-top" src="image1.png">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-        </div>
         <div class="card-footer">
           <a href="#" id="youtube_video" onclick="showVideo()" class="btn btn-primary">Find Out More!</a>
         </div>
@@ -66,10 +51,6 @@
     <div class="col-lg-3 col-md-6 mb-4">
       <div class="card">
         <img class="card-img-top" src="image2.png" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Launch 1</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-        </div>
         <div class="card-footer">
           <a href="#" class="btn btn-primary">Find Out More!</a>
         </div>
@@ -79,35 +60,20 @@
     <div class="col-lg-3 col-md-6 mb-4">
       <div class="card">
         <img class="card-img-top" src="image3.png" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Launch 2</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-        </div>
         <div class="card-footer">
           <a href="#" class="btn btn-primary">Find Out More!</a>
         </div>
       </div>
     </div>
-
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card">
-        <img class="card-img-top" src="image4.png" alt="500x325">
-        <div class="card-body">
-          <h4 class="card-title">Launch 3</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
     </div>
 
   </div>
           <div id="overlay" onclick="offThirdScreen()">
-              test
-                  <iframe width="420" height="315"
-                          src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                  </iframe>
+                    <div id="videos">
+                      <iframe width="80%" height="450"
+                              src="https://www.youtube.com/embed/ZkOKRkI4Nw4" allow="autoplay">
+                      </iframe>
+                    </div>
           </div>
 </div>
   <!-- /.row -->
@@ -123,14 +89,6 @@
   </div>
   <!-- /.container -->
 </footer>
-
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</div>
 
 </body>
 
@@ -151,11 +109,12 @@
     }
     function offThirdScreen(){
         document.getElementById("overlay").style.display = "none";
-        // document.getElementByID("divID").style.backgroundColor = "black";
-        // window.setTimeout("yourFunction()",10000);document.body.style.backgroundColor = "black";
-        // document.getElementByID("divID").style.backgroundColor = "black";
-        // window.setTimeout("yourFunction()",10000);
     }
+
+
+    $('.input-daterange input').each(function() {
+        $(this).datepicker('clearDates');
+    });
 </script>
 </html>
 
