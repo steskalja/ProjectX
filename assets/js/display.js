@@ -28,14 +28,15 @@ function GetData(){
 function display (result){
 
 var shuttleDiv=$("<div class ='card'>");
-var shuttletitle = $("<div class='card-header'>").text("Shuttle name: "+result.rocket.rocket_name+"  Launch date: "+ result.launch_date_local);
+var shuttletitle = $("<div class='card-header'>").text("Shuttle name: "+result.rocket.rocket_name+"   Launch date: "+ result.launch_date_local);
 var shuttleimage = $("<img class ='card-img-top'>");
 shuttleimage.attr('src', result.links.mission_patch);
 var shuttlinfoline = $("<div class = 'card-footer'>");
 var shuttlepdf = $("<button class='getPDF'>");
 shuttlepdf.text("Find out more in this PDF");
-var shuttlevideo = $("<a class ='getYotube'>");
+var shuttlevideo = $("<a href class ='getYotube'>");
 shuttlevideo.text("watch the video");
+shuttlevideo.attr('src',result.links.video_link);
 
 shuttlinfoline.append(shuttlepdf);
 shuttlinfoline.append(shuttlevideo);
