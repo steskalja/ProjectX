@@ -36,7 +36,7 @@ var shuttlepdf = $("<button class='getPDF'>");
 shuttlepdf.text("Find out more in this PDF");
 var shuttlevideo = $("<a href class ='getYotube'>");
 shuttlevideo.text("watch the video");
-shuttlevideo.attr('src',result.links.video_link);
+shuttlevideo.attr('href',result.links.video_link);
 
 shuttlinfoline.append(shuttlepdf);
 shuttlinfoline.append(shuttlevideo);
@@ -52,3 +52,7 @@ $(".results").append(shuttleDiv);
 $(document).on("click","#researchButton",function(){
     GetData();
    })
+
+  
+
+
