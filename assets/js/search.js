@@ -1,14 +1,32 @@
 $(document).ready(function() {
 
 var myList = [];
+
+function nextPage() {
+  var first = document.getElementById("front-page");
+  var second = document.getElementById("second_page");
+  if (first.style.display === "none") {
+      first.style.display = "block";
+  } else {
+      first.style.display = "none";
+      second.style.display = "block";
+  }
+}
+
+
 function GetData(){
 
-  var queryURL = "https://api.spacexdata.com/v2/launches?pretty=true&start=2017-01-01&end=2017-06-25"
+  var sDate = $(".dStart").val().trim();
+  var eDate = $(".dEnd").val().trim();
+  $("#ds2").val = sDate;
+  $("#de2").val = eDate;
+  var queryURL = "https://api.spacexdata.com/v2/launches?pretty=true&start=" + sDate + "&end=" +  eDate;
   $.ajax({
     url: queryURL,
     method: "GET"
   })
     .then(function(response) {
+      $(".results").empty();
       for(i=0; i < response.length; i++)
       {
         var payload = {
@@ -20,12 +38,58 @@ function GetData(){
           "Video" : response[i].links.video_link
         }
         myList.push(payload);
+        display(response[i]);
       }
     })
   
 }  
-  
 
+
+function display (result){
+
+
+
+  var shuttleDiv=$("<div class ='card'>");
+  
+  var shuttletitle = $("<div class='card-header'>").text("Shuttle name: "+result.rocket.rocket_name+"  Launch date: "+ result.launch_date_local);
+  
+  var shuttleimage = $("<img class ='card-img-top'>");
+  
+  shuttleimage.attr('src', result.links.mission_patch);
+  
+  var shuttlinfoline = $("<div class = 'card-footer'>");
+  
+  var shuttlepdf = $("<button class='getPDF'>");
+  
+  shuttlepdf.text("Find out more in this PDF");
+  shuttlepdf.attr("data-flight", result.flight_number);
+  
+  var shuttlevideo = $("<a href class ='btn btn-primary getYotube'>");
+
+  shuttlevideo.text("watch the video");
+
+  shuttlevideo.attr('src',result.links.video_link);
+  
+  
+  
+  shuttlinfoline.append(shuttlepdf);
+  
+  shuttlinfoline.append(shuttlevideo);
+  
+  shuttleDiv.append(shuttletitle);
+  
+  shuttleDiv.append(shuttleimage);
+  
+  shuttleDiv.append(shuttlinfoline);
+  
+  $(".results").append(shuttleDiv);
+  
+  
+  
+  }
+$(document).on("click",".researchButton",function(){
+  GetData();
+})
   
   
   // Builds the HTML Table out of myList.

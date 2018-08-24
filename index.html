@@ -24,22 +24,22 @@
         <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
     </div>
       <div class="input-group input-daterange">
-          <input type="date" class="form-control" id="dStart" value="2012-04-05">
+          <input type="date" class="form-control dStart" id="ds1" value="2012-04-05">
           <div class="input-group-addon">to</div>
-          <input type="date" class="form-control" id="dEnd" value="2012-04-19">
+          <input type="date" class="form-control dEnd" id="de1" value="2012-04-19">
       </div>
-      <center><button id="buttonFirst" onclick="nextPage()">Submit</button></p></center>
+      <center><button id="buttonFirst" class="researchButton" onclick="nextPage()">Submit</button></p></center>
       </div>
 <!-- Page Features -->
       <div id="second_page">
           <div id="searchBar">
               <div class="input-group input-daterange">
-                  <input type="text" class="form-control" value="2012-04-05">
+                  <input type="date" class="form-control dStart" id="ds2" value="2012-04-05">
                   <div class="input-group-addon">to</div>
-                  <input type="text" class="form-control" value="2012-04-19">
+                  <input type="date" class="form-control dEnd" id="de2" value="2012-04-19">
               </div>
 
-              <center><button id="researchButton">Submit</button></p></center>
+              <center><button class="researchButton">Submit</button></p></center>
           </div>
       <div class="row text-center results">
     <div class="col-lg-3 col-md-6 mb-4">
@@ -98,16 +98,17 @@
 </body>
 
 <script>
-    function nextPage() {
-        var first = document.getElementById("front-page");
-        var second = document.getElementById("second_page");
-        if (first.style.display === "none") {
-            first.style.display = "block";
-        } else {
-            first.style.display = "none";
-            second.style.display = "block";
-        }
-    }
+  function nextPage() {
+  var first = document.getElementById("front-page");
+  var second = document.getElementById("second_page");
+  if (first.style.display === "none") {
+      first.style.display = "block";
+  } else {
+      first.style.display = "none";
+      second.style.display = "block";
+  }
+}
+
 
     function showVideo() {
         document.getElementById("overlay").style.display = "block";
