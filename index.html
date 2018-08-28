@@ -6,69 +6,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
   <script src="assets/js/jquery-3.3.1.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/jspdf.min.js"></script>
+  <script src="assets/js/moment.js"></script>
   <script src="assets/js/search.js"></script>
-  <script src="assets/js/display.js"></script>
 
 </head>
 
 <body>
   <div class="container">
-      <div id="front-page">
-    <div class="jumbotron">
+    <div id="front-page" style="display:block">
+      <div class="jumbotron">
         <h1>PROJECT X</h1>
         <p>...</p>
         <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+      </div>
+
     </div>
+    <div id="searchButtons">
       <div class="input-group input-daterange">
-          <input type="date" class="form-control dStart" id="ds1" value="2012-04-05">
-          <div class="input-group-addon">to</div>
-          <input type="date" class="form-control dEnd" id="de1" value="2012-04-19">
+        <input type="date" class="form-control dStart" id="ds1" value="2012-04-05">
+        <div class="input-group-addon">to</div>
+        <input type="date" class="form-control dEnd" id="de1" value="2012-04-19">
       </div>
       <center><button id="buttonFirst" class="researchButton" onclick="nextPage()">Submit</button></p></center>
-      </div>
-<!-- Page Features -->
-      <div id="second_page">
-          <div id="searchBar">
-              <div class="input-group input-daterange">
-                  <input type="date" class="form-control dStart" id="ds2" value="2012-04-05">
-                  <div class="input-group-addon">to</div>
-                  <input type="date" class="form-control dEnd" id="de2" value="2012-04-19">
-              </div>
-
-              <center><button class="researchButton">Submit</button></p></center>
-          </div>
+    </div>
+  <!-- Page Features -->
+    <div id="second_page" style="display:none">
       <div class="row text-center results">
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card">
-        <img class="card-img-top" src="image1.png">
-        <div class="card-footer">
-          <a href="#" id="youtube_video" onclick="showVideo()" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="image1.png">
+              <div class="card-footer">
+                <a href="#" id="youtube_video" onclick="showVideo()" class="btn btn-primary">Find Out More!</a>
+              </div>
+            </div>
+          </div>
 
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card">
-        <img class="card-img-top" src="image2.png" alt="">
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card">
+              <img class="card-img-top" src="image2.png" alt="">
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary">Find Out More!</a>
+              </div>
+            </div>
+          </div>
 
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card">
-        <img class="card-img-top" src="image3.png" alt="">
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card">
+              <img class="card-img-top" src="image3.png" alt="">
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary">Find Out More!</a>
+               </div>
+            </div>
+            </div>
       </div>
-    </div>
-    </div>
 
   </div>
           <div id="overlay" onclick="offThirdScreen()">
@@ -97,14 +92,7 @@
 
 <script>
   function nextPage() {
-  var first = document.getElementById("front-page");
-  var second = document.getElementById("second_page");
-  if (first.style.display === "none") {
-      first.style.display = "block";
-  } else {
-      first.style.display = "none";
-      second.style.display = "block";
-  }
+ 
 }
 
 
