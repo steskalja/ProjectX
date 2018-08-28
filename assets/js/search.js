@@ -73,7 +73,7 @@ function display (result,tip){
   shuttleimage.attr('title',tipinfo );
   var shuttlinfoline = $("<div class = 'card-footer'>");
   var shuttlepdf = $("<button class='btn btn-primary getPDF'>");
-  var shuttleqr = $("<button class='btn btn-primary getQR'>");
+  var shuttleqr = $("<a href='#' class ='btn btn-primary getQR' data-toggle='modal' data-target='#qrModal' >");
   shuttlepdf.text("Find out more in this PDF");
   shuttlepdf.attr('data-flight',result.flight_number);
   shuttleqr.text("QR Code");
@@ -108,15 +108,12 @@ $(document).on("click",".researchButton",function(){
 
 
 $(document).on("click",".getYoutube",function(){
-    var trigger = $("body").find('[data-toggle="modal"]');
-    trigger.click(function () {
-        var theModal = $(this).data("target"),
-            videoSRC = $(this).attr("data-theVideo"),
-            videoSRCauto = videoSRC + "?autoplay=1";
-        $(theModal + ' iframe').attr('src', videoSRCauto);
-        $(theModal + ' button.close').click(function () {
-            $(theModal + ' iframe').attr('src', videoSRC);
-        });
+  var theModal = $(this).data("target"),
+      videoSRC = $(this).attr("data-theVideo"),
+      videoSRCauto = videoSRC + "?autoplay=1";
+    $(theModal + ' iframe').attr('src', videoSRCauto);
+    $(theModal + ' button.close').click(function () {
+      $(theModal + ' iframe').attr('src', videoSRC);
     });
 });
   function GetRecord(id)
@@ -146,7 +143,9 @@ $(document).on("click",".getYoutube",function(){
     }); 
   });
   $(document).on("click",".getQR", function(){
+    var theModal = $(this).data("target");
     var fVLink = $(this).attr('data-video').trim();
-    
+    $("#qrcode").empty();
+    new QRCode(document.getElementById("qrcode"), fVLink);
   });
 })
