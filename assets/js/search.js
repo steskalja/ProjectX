@@ -73,13 +73,19 @@ function display (result,tip){
   shuttleimage.attr('title',tipinfo );
   var shuttlinfoline = $("<div class = 'card-footer'>");
   var shuttlepdf = $("<button class='btn btn-primary getPDF'>");
+  var shuttleqr = $("<button class='btn btn-primary getQR'>");
   shuttlepdf.text("Find out more in this PDF");
   shuttlepdf.attr('data-flight',result.flight_number);
-  var shuttlevideo = $("<a href class ='btn btn-primary getYotube'>");
+  shuttleqr.text("QR Code");
+  shuttleqr.attr('data-video',result.links.video_link);
+  var shuttlevideo = $("<a href='#' class ='btn btn-primary getYoutube' data-toggle='modal' data-target='#videoModal' >");
   shuttlevideo.text("watch the video");
-  shuttlevideo.attr('href',result.links.video_link);
+  var vLink = result.links.video_link;
+  vLink = vLink.replace('https://www.youtube.com/watch?v=','https://www.youtube.com/embed/');
+  shuttlevideo.attr('data-theVideo',vLink);
   shuttlinfoline.append(shuttlepdf);
   shuttlinfoline.append(shuttlevideo);
+  shuttlinfoline.append(shuttleqr);
   shuttleDiv.append(shuttletitle);
   shuttleDiv.append(shuttleimage);
   shuttleDiv.append(shuttlinfoline);
@@ -99,25 +105,48 @@ $(document).on("click",".researchButton",function(){
   GetData();
 })
   
-  
-  // Adds a header row to the table and returns the set of columns.
-  // Need to do union of keys from all records as some records may not contain
-  // all records.
+
+
+$(document).on("click",".getYoutube",function(){
+    var trigger = $("body").find('[data-toggle="modal"]');
+    trigger.click(function () {
+        var theModal = $(this).data("target"),
+            videoSRC = $(this).attr("data-theVideo"),
+            videoSRCauto = videoSRC + "?autoplay=1";
+        $(theModal + ' iframe').attr('src', videoSRCauto);
+        $(theModal + ' button.close').click(function () {
+            $(theModal + ' iframe').attr('src', videoSRC);
+        });
+    });
+});
   function GetRecord(id)
   {
-    return database.ref('flights/' + id).once('value').then(function(snapshot) {
-      var rData = JSON.stringify(snapshot.val());
+    return new Promise(function(resolve,reject){
+      database.ref('flights/' + id).once('value').then(function(snapshot) {
+        var rData = JSON.stringify(snapshot.val());
+        resolve(rData);
+        console.log(rData);
+      });
     });
+    
   }
+
+
   $(document).on("click",".getPDF", function(){
     var fID = $(this).attr('data-flight').trim();
-    var fData = GetRecord(fID);
-
-    if(fData != null)
-    {
-      var doc = new jsPDF();
-      doc.text(fData,2,2);
-      doc.save(fID +'.pdf');
-    }
-  })
+    GetRecord(fID).then(function(res){ 
+      var fData = res;
+      console.log(fData);
+      if(fData != null)
+      {
+        var doc = new jsPDF();
+        doc.text(fData,2,2);
+        doc.save(fID +'.pdf');
+      }
+    }); 
+  });
+  $(document).on("click",".getQR", function(){
+    var fVLink = $(this).attr('data-video').trim();
+    
+  });
 })

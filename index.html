@@ -12,6 +12,7 @@
   <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/jspdf.min.js"></script>
   <script src="assets/js/moment.js"></script>
+  <script src="assets/js/qrcode.js"></script>
   <script src="assets/js/search.js"></script>
 
 </head>
@@ -66,13 +67,18 @@
       </div>
 
   </div>
-          <div id="overlay" onclick="offThirdScreen()">
-                    <div id="videos">
-                      <iframe width="80%" height="450"
-                              src="https://www.youtube.com/embed/ZkOKRkI4Nw4" allow="autoplay">
-                      </iframe>
-                    </div>
-          </div>
+  <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div>
+                    <iframe width="100%" height="350" src=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
 </div>
   <!-- /.row -->
 
