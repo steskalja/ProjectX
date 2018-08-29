@@ -120,7 +120,7 @@ $(document).on("click",".getYoutube",function(){
   {
     return new Promise(function(resolve,reject){
       database.ref('flights/' + id).once('value').then(function(snapshot) {
-        var rData = JSON.stringify(snapshot.val());
+        var rData = JSON.stringify(snapshot.val(),null,"\n");
         resolve(rData);
         console.log(rData);
       });
@@ -137,7 +137,7 @@ $(document).on("click",".getYoutube",function(){
       if(fData != null)
       {
         var doc = new jsPDF();
-        doc.text(fData,2,2);
+        doc.text(fData,10,10);
         doc.save(fID +'.pdf');
       }
     }); 
