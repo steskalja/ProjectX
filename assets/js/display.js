@@ -33,9 +33,9 @@ var shuttleimage = $("<img class ='card-img-top'>");
 shuttleimage.attr('src', result.links.mission_patch);
 var shuttlinfoline = $("<div class = 'card-footer'>");
 var shuttlepdf = $("<button class='getPDF'>");
-shuttlepdf.text("Find out more in this PDF");
+shuttlepdf.text("Download PDF");
 var shuttlevideo = $("<a href class ='getYotube'>");
-shuttlevideo.text("watch the video");
+shuttlevideo.text("Video");
 shuttlevideo.attr('src',result.links.video_link);
 
 shuttlinfoline.append(shuttlepdf);

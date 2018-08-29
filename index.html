@@ -18,53 +18,52 @@
 </head>
 
 <body>
-  <div class="container">
+<div class="container">
     <div id="front-page" style="display:block">
-      <div class="jumbotron">
-        <h1>PROJECT X</h1>
-        <p>...</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
-      </div>
-
+        <div class="jumbotron">
+        </div>
+    </div>
+    <div id="hide_instructions">
+        <h2>What is Lorem Ipsum?</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type
+            specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the
+            1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+            recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
     </div>
     <div id="searchButtons">
-      <div class="input-group input-daterange">
-        <input type="date" class="form-control dStart" id="ds1" value="2012-04-05">
-        <div class="input-group-addon">to</div>
-        <input type="date" class="form-control dEnd" id="de1" value="2012-04-19">
-      </div>
-      <center><button id="buttonFirst" class="researchButton" onclick="nextPage()">Submit</button></p></center>
+        <div class="input-group input-daterange">
+            <input type="date" class="form-control dStart" id="ds1" value="2008-01-01">
+            <div class="input-group-addon">&nbsp; <font color="white">To</font> &nbsp;</div>
+            <input type="date" class="form-control dEnd" id="de1" value="2012-04-19">
+        </div>
+        <center><button id="buttonFirst" class="researchButton" onclick="hideInstruc()">Submit</button></p></center>
     </div>
   <!-- Page Features -->
-    <div id="second_page" style="display:none">
-      <div class="row text-center results">
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="image1.png">
-              <div class="card-footer">
-                <a href="#" id="youtube_video" onclick="showVideo()" class="btn btn-primary">Find Out More!</a>
-              </div>
-            </div>
+  <div id="second_page" style="display:none">
+    <h3>Shuttles Launched</h3>
+    <div class="row text-center results">
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="image1.png">
+          <div class="card-footer">
+            <a href="#" id="youtube_video" onclick="showVideo()" class="btn btn-primary">Find Out More!</a>
           </div>
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-              <img class="card-img-top" src="image2.png" alt="">
-              <div class="card-footer">
-                <a href="#" class="btn btn-primary">Find Out More!</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-              <img class="card-img-top" src="image3.png" alt="">
-              <div class="card-footer">
-                <a href="#" class="btn btn-primary">Find Out More!</a>
-               </div>
-            </div>
-            </div>
+        </div>
       </div>
+    </div>
+
+  </div>
+  <div id="overlay" onclick="offThirdScreen()">
+    <div id="videos">
+      <iframe width="80%" height="450"
+              src="https://www.youtube.com/embed/ZkOKRkI4Nw4" allow="autoplay">
+      </iframe>
+    </div>
+  </div>
+</div>
 
   </div>
   <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
@@ -92,38 +91,23 @@
     </div>
   </div>
 </div>
-  <!-- /.row -->
 
 </div>
-<!-- /.container -->
-
-<!-- Footer -->
 <br>
-<footer class="py-5 bg-dark">
-  <div class="container">
+<div class="footer">
     <p class="m-0 text-center text-white">Copyright &copy; GE Digital GT Bootcamp Team 1- 2018</p>
-  </div>
-  <!-- /.container -->
-</footer>
-
+</div>
 </body>
 
 <script>
-  function nextPage() {
- 
-}
-
-
+    function hideInstruc() {
+        document.getElementById("hide_instructions").style.display = "none";
+    }
     function showVideo() {
         document.getElementById("overlay").style.display = "block";
     }
     function offThirdScreen(){
         document.getElementById("overlay").style.display = "none";
     }
-
-
-    $('.input-daterange input').each(function() {
-        $(this).datepicker('clearDates');
-    });
 </script>
 </html>

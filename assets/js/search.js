@@ -74,12 +74,12 @@ function display (result,tip){
   var shuttlinfoline = $("<div class = 'card-footer'>");
   var shuttlepdf = $("<button class='btn btn-primary getPDF'>");
   var shuttleqr = $("<a href='#' class ='btn btn-primary getQR' data-toggle='modal' data-target='#qrModal' >");
-  shuttlepdf.text("Find out more in this PDF");
+  shuttlepdf.text("Download PDF");
   shuttlepdf.attr('data-flight',result.flight_number);
-  shuttleqr.text("QR Code");
+  shuttleqr.text("QR-Code");
   shuttleqr.attr('data-video',result.links.video_link);
   var shuttlevideo = $("<a href='#' class ='btn btn-primary getYoutube' data-toggle='modal' data-target='#videoModal' >");
-  shuttlevideo.text("watch the video");
+  shuttlevideo.text("Video");
   var vLink = result.links.video_link;
   vLink = vLink.replace('https://www.youtube.com/watch?v=','https://www.youtube.com/embed/');
   shuttlevideo.attr('data-theVideo',vLink);
