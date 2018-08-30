@@ -124,3 +124,15 @@ h2{
 #searchButtons{
     padding-top: 20px;
 }
+
+.vmodal{
+    width: 800px;
+    padding-left: 5%;
+}
+
+.qr-content{
+    width: 240px;
+}
+.modal-content{
+    background-color: black;
+}
